@@ -1,4 +1,4 @@
-package com.example.shoppinglistapi.controllers;
+package com.example.shoppinglistapi.shoppinglist;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
