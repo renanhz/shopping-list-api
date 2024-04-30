@@ -1,15 +1,14 @@
 package com.example.shoppinglistapi.shoppinglist;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.example.shoppinglistapi.item.Item;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,4 +29,7 @@ public class ShoppingList {
     private LocalDate closedDate;
 
     private boolean closed;
+
+    @OneToMany(mappedBy = "list")
+    private List<Item> items;
 }
