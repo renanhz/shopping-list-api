@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ShoppingListController {
 
     @RequestMapping("/{channelId}")
-    public ResponseEntity<String> getShoppingList(@PathVariable("channelId") String channelId) {
+    public ResponseEntity<String> getShoppingList(@PathVariable("channelId") Long channelId) {
         return ResponseEntity.ok("Hello World");
     }
 }
