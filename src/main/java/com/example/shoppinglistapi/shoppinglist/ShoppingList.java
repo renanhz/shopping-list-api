@@ -32,4 +32,10 @@ public class ShoppingList {
 
     @OneToMany(mappedBy = "list")
     private List<Item> items;
+
+    public ShoppingList(Long channelId) {
+        this.channelId = channelId;
+        this.closed = false;
+        this.creationDate = LocalDate.now();
+    }
 }
