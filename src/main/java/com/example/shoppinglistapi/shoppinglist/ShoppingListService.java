@@ -19,4 +19,10 @@ public class ShoppingListService {
         return shoppingListRepository.findByChannelId(channelId);
     }
 
+    public ShoppingList createShoppingList(Long channelId) {
+        ShoppingList shoppingList = new ShoppingList(channelId);
+
+        return shoppingListRepository.save(shoppingList);
+    }
+
 }
