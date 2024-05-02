@@ -7,6 +7,6 @@ import java.util.Optional;
 
 public interface ShoppingListRepository extends JpaRepository<ShoppingList, Long> {
 
-    @Query("SELECT s FROM shopping_list s WHERE s.channel_id = ?1 AND s.closed = 0")
+    @Query(nativeQuery = true, value = "SELECT * FROM shopping_list s WHERE s.channel_id = ?1 AND s.closed = 0")
     Optional<ShoppingList> findByChannelId(Long channelId);
 }
