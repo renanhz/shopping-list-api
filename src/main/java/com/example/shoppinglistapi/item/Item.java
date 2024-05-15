@@ -24,7 +24,7 @@ public class Item {
     private int quantity;
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = ShoppingList.class)
-    @JoinColumn(name = "listId", insertable = false, updatable = false)
+    @JoinColumn(name = "list_id", insertable = false, updatable = false)
     private ShoppingList list;
 
     @Column(name = "list_id")
