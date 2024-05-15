@@ -23,7 +23,10 @@ public class Item {
 
     private int quantity;
 
-    @ManyToOne
-    @JoinColumn(name = "listId")
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = ShoppingList.class)
+    @JoinColumn(name = "listId", insertable = false, updatable = false)
     private ShoppingList list;
+
+    @Column(name = "list_id")
+    private Long listId;
 }
