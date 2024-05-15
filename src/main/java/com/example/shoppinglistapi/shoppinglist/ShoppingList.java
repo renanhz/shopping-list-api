@@ -18,8 +18,15 @@ import java.util.List;
 @Setter
 public class ShoppingList {
 
+
+    @TableGenerator(
+            name = "shoppingListIdGenerator",
+            allocationSize = 1,
+            initialValue = 1)
     @Id
-    @GeneratedValue
+    @GeneratedValue(
+            strategy=GenerationType.TABLE,
+            generator="shoppingListIdGenerator")
     private Long id;
 
     private Long channelId;
