@@ -23,7 +23,7 @@ public class ItemService {
         this.shoppingListService = shoppingListService;
     }
 
-    public void addItemToList(Long channelId, Item item) {
+    public void addItemToList(Long channelId, Item item) throws Exception {
         Optional<ShoppingList> shoppingList = shoppingListService.getOpenShoppingList(channelId);
 
         if (shoppingList.isPresent()) {
@@ -31,7 +31,7 @@ public class ItemService {
 
             itemRepository.save(item);
         } else {
-//            throw new Exception("É preciso criar uma lista antes de adicionar um item");
+            throw new Exception("É preciso criar uma lista antes de adicionar um item");
         }
     }
 
