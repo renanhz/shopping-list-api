@@ -19,8 +19,9 @@ public class ItemController {
     @PostMapping("/{channelId}")
     public ResponseEntity<String> addItemToList(
             @PathVariable("channelId") Long channelId,
-            @RequestBody Item item)
-    {
+            @RequestBody Item item) {
+        itemService.addItemToList(channelId, item);
+
         return new ResponseEntity<String>("Item adicionado", HttpStatus.CREATED);
     }
 }
