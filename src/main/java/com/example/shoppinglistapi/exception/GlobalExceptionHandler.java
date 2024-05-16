@@ -13,7 +13,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     @ExceptionHandler(ShoppingListNotFoundException.class)
-    public ResponseEntity<String> listNotCreated(String message) {
-        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+    public ShoppingListNotFoundException listNotCreated(String message) {
+        return new ShoppingListNotFoundException(message);
     }
 }

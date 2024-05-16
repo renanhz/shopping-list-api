@@ -1,5 +1,6 @@
 package com.example.shoppinglistapi.item;
 
+import com.example.shoppinglistapi.exception.ShoppingListNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class ItemController {
     @PostMapping("/{channelId}")
     public ResponseEntity<String> addItemToList(
             @PathVariable("channelId") Long channelId,
-            @RequestBody Item item) throws Exception {
+            @RequestBody Item item) throws ShoppingListNotFoundException {
         itemService.addItemToList(channelId, item);
 
         return new ResponseEntity<String>("Item adicionado", HttpStatus.CREATED);

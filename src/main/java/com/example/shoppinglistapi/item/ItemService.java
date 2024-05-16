@@ -1,5 +1,6 @@
 package com.example.shoppinglistapi.item;
 
+import com.example.shoppinglistapi.exception.ShoppingListNotFoundException;
 import com.example.shoppinglistapi.shoppinglist.ShoppingList;
 import com.example.shoppinglistapi.shoppinglist.ShoppingListService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class ItemService {
         this.shoppingListService = shoppingListService;
     }
 
-    public void addItemToList(Long channelId, Item item) throws Exception {
+    public void addItemToList(Long channelId, Item item) throws ShoppingListNotFoundException {
         Optional<ShoppingList> shoppingList = shoppingListService.getOpenShoppingList(channelId);
 
         if (shoppingList.isPresent()) {
@@ -31,7 +32,7 @@ public class ItemService {
 
             itemRepository.save(item);
         } else {
-            throw new Exception("É preciso criar uma lista antes de adicionar um item");
+            throw new ShoppingListNotFoundException("É preciso criar uma lista antes de adicionar um item");
         }
     }
 
