@@ -1,9 +1,11 @@
 package com.example.shoppinglistapi.shoppinglist;
 
+import com.example.shoppinglistapi.item.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,6 +20,14 @@ public class ShoppingListService {
 
     public Optional<ShoppingList> getOpenShoppingList(Long channelId) {
         return shoppingListRepository.findByChannelId(channelId);
+    }
+    public List<Item> getShoppingListItems(Long channelId) {
+        Optional<ShoppingList> sl = getOpenShoppingList(channelId);
+        if (sl.isPresent()) {
+            return sl.get().getItems();
+        } else {
+            return List.of();
+        }
     }
 
     public ShoppingList createShoppingList(Long channelId) {
