@@ -10,6 +10,10 @@ public class ShoppingListDTO {
 
     private List<ItemDTO> items = new ArrayList<>();
 
+    public List<ItemDTO> getItems() {
+        return items;
+    }
+
     public ShoppingListDTO(ShoppingList sl) {
         for (Item item:sl.getItems()) {
             ItemDTO itemDTO = new ItemDTO(item);

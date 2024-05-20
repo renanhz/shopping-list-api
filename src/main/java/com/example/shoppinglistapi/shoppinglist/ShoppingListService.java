@@ -1,6 +1,6 @@
 package com.example.shoppinglistapi.shoppinglist;
 
-import com.example.shoppinglistapi.item.Item;
+import com.example.shoppinglistapi.item.ItemDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,10 +21,12 @@ public class ShoppingListService {
     public Optional<ShoppingList> getOpenShoppingList(Long channelId) {
         return shoppingListRepository.findByChannelId(channelId);
     }
-    public List<Item> getShoppingListItems(Long channelId) {
+    public List<ItemDTO> getShoppingListItems(Long channelId) {
         Optional<ShoppingList> sl = getOpenShoppingList(channelId);
+
         if (sl.isPresent()) {
-            return sl.get().getItems();
+            ShoppingListDTO slDTO = new ShoppingListDTO(sl.get());
+            return slDTO.getItems();
         } else {
             return List.of();
         }

@@ -1,9 +1,12 @@
 package com.example.shoppinglistapi.shoppinglist;
 
+import com.example.shoppinglistapi.item.ItemDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/shopping-list")
@@ -17,14 +20,16 @@ public class ShoppingListController {
     }
 
     @GetMapping("/{channelId}")
-    public ResponseEntity<String> getShoppingList(@PathVariable("channelId") Long channelId) {
-        return ResponseEntity.ok("Hello World");
+    public ResponseEntity<List<ItemDTO>> getShoppingList(@PathVariable("channelId") Long channelId) {
+        List<ItemDTO> items = shoppingListService.getShoppingListItems(channelId);
+
+        return new ResponseEntity<>(items, HttpStatus.OK);
     }
 
     @PostMapping("/{channelId}")
     public ResponseEntity<ShoppingList> createShoppingList(@PathVariable("channelId") Long channelId) {
         ShoppingList shoppingList = shoppingListService.createShoppingList(channelId);
 
-        return new ResponseEntity<ShoppingList>(shoppingList, HttpStatus.CREATED);
+        return new ResponseEntity<>(shoppingList, HttpStatus.CREATED);
     }
 }
