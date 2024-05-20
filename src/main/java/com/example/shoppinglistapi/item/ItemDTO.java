@@ -1,5 +1,8 @@
 package com.example.shoppinglistapi.item;
 
+import lombok.Getter;
+
+@Getter
 public class ItemDTO {
 
     private String name;
