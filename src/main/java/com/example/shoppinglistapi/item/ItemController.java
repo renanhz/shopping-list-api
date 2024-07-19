@@ -25,4 +25,11 @@ public class ItemController {
 
         return new ResponseEntity<String>("Item adicionado", HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/{itemId}")
+    public ResponseEntity<String> removeItemFromList(@PathVariable("itemId") Long itemID) {
+        itemService.removeItemFromList(itemID);
+
+        return new ResponseEntity<String>("Item removido da lista", HttpStatus.OK);
+    }
 }

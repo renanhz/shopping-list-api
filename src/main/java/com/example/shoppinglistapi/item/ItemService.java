@@ -36,4 +36,8 @@ public class ItemService {
         }
     }
 
+    public void removeItemFromList(Long itemId) {
+        itemRepository.deleteById(itemId);
+    }
+
 }
